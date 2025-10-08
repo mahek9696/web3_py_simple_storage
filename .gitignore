@@ -1,1 +1,5 @@
+.venv/
 .env
+compiled_code.json
+__pycache__/
+*.pyc

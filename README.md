@@ -46,3 +46,18 @@ private_key = os.getenv("PRIVATE_KEY")
 ```
 
 And make sure you have testnet ETH for whatever testnet you're on!
+
+MEE
+1.cd /Users/pragneshpatel/Documents/GVP/Blockchain-301/demos/web3_py_simple_storage
+
+2.  python3 -m venv .venv
+
+3.  source .venv/bin/activate
+
+4.  pip install --upgrade pip setuptools wheel
+
+5.  pip install -r requirements.txt
+
+    6.Ganache Instalation and address
+
+6.  python3 deploy.py

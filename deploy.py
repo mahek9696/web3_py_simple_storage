@@ -52,7 +52,7 @@ abi = json.loads(
 # chain_id = 4
 #
 # For connecting to ganache
-w3 = Web3(Web3.HTTPProvider("http://0.0.0.0:8545"))
+w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
 chain_id = 1337
 
 if chain_id == 4:
@@ -61,8 +61,8 @@ if chain_id == 4:
 #Added print statement to ensure connection suceeded as per
 #https://web3py.readthedocs.io/en/stable/middleware.html#geth-style-proof-of-authority
 
-my_address = "0x6aABE487828603b6f0a3E1C7DAcF7F42bA42A9B2"
-private_key = "8a63f5a3608d032ba652a323d62f333f71a895d253d6aa9f5defc16a43e4d7f1"
+my_address = "0x6d4EfdD9aE0364002Fca0E0c2a9bAE1BE380fB6A"
+private_key = "0x7d948b4c20087a15be208b32f2b27abae38c650b85cf1b43520c6451fc20687f"
 
 # Create the contract in Python
 SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
@@ -81,7 +81,7 @@ transaction = SimpleStorage.constructor().build_transaction(
 signed_txn = w3.eth.account.sign_transaction(transaction, private_key=private_key)
 print("Deploying Contract!")
 # Send it!
-tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+tx_hash = w3.eth.send_raw_transaction(signed_txn.raw_transaction)
 # Wait for the transaction to be mined, and get the transaction receipt
 print("Waiting for transaction to finish...")
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
@@ -102,7 +102,7 @@ greeting_transaction = simple_storage.functions.store(15).build_transaction(
 signed_greeting_txn = w3.eth.account.sign_transaction(
     greeting_transaction, private_key=private_key
 )
-tx_greeting_hash = w3.eth.send_raw_transaction(signed_greeting_txn.rawTransaction)
+tx_greeting_hash = w3.eth.send_raw_transaction(signed_greeting_txn.raw_transaction)
 print("Updating stored Value...")
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_greeting_hash)
 
